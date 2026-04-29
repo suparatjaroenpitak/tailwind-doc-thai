@@ -23,8 +23,8 @@ export function DocLayout({ doc, children }: DocLayoutProps) {
           <Sidebar activeSlug={doc.slug} compact />
         </div>
 
-        <div className="mb-8 flex flex-col gap-5 border-b border-slate-200 pb-8 dark:border-slate-800 md:flex-row md:items-start md:justify-between">
-          <div>
+        <div className="sticky top-16 z-30 -mx-4 mb-4 flex items-start justify-between gap-3 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 sm:-mx-6 sm:px-6 md:static md:mx-0 md:mb-8 md:gap-5 md:bg-transparent md:px-0 md:py-0 md:pb-8 md:backdrop-blur-none md:flex-row md:items-start">
+          <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2 text-sm">
               <Link href="/docs" className="font-semibold text-slate-500 hover:text-sky-600 dark:text-slate-400">
                 Docs
@@ -34,15 +34,19 @@ export function DocLayout({ doc, children }: DocLayoutProps) {
                 {doc.category}
               </span>
             </div>
-            <h1 className="mt-3 text-4xl font-bold tracking-normal text-slate-950 dark:text-white">
+            <h1 className="mt-2 text-2xl font-bold tracking-normal text-slate-950 dark:text-white md:mt-3 md:text-4xl">
               {doc.title}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+            <p className="mt-4 hidden max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:block">
               {doc.description}
             </p>
           </div>
           <BookmarkButton slug={doc.slug} />
         </div>
+
+        <p className="mb-8 text-base leading-7 text-slate-700 dark:text-slate-300 md:hidden">
+          {doc.description}
+        </p>
 
         <section className="mb-8 grid gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900/40 sm:grid-cols-3">
           <div>
