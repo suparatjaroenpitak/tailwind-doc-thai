@@ -47,6 +47,10 @@ export function Sidebar({ activeSlug, compact = false }: SidebarProps) {
     );
   }
 
+  function getDocHref(slug: string) {
+    return compact ? `/docs/${slug}#doc-content` : `/docs/${slug}`;
+  }
+
   return (
     <aside
       className={
@@ -79,7 +83,7 @@ export function Sidebar({ activeSlug, compact = false }: SidebarProps) {
                 return (
                   <Link
                     key={slug}
-                    href={`/docs/${slug}`}
+                    href={getDocHref(slug)}
                     className={`rounded-md px-2 py-1 text-xs font-semibold ${
                       page.slug === activeSlug
                         ? "bg-sky-500 text-white"
@@ -121,7 +125,7 @@ export function Sidebar({ activeSlug, compact = false }: SidebarProps) {
                       return (
                         <Link
                           key={page.slug}
-                          href={`/docs/${page.slug}`}
+                          href={getDocHref(page.slug)}
                           className={`block rounded-md px-3 py-2 text-sm transition ${
                             active
                               ? "bg-sky-50 font-semibold text-sky-700 dark:bg-sky-400/10 dark:text-sky-200"

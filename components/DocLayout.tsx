@@ -66,7 +66,9 @@ export function DocLayout({ doc, children }: DocLayoutProps) {
           </Link>
         </section>
 
-        <div className="doc-prose max-w-3xl">{children}</div>
+        <div id="doc-content" className="doc-prose max-w-3xl scroll-mt-36 md:scroll-mt-24">
+          {children}
+        </div>
 
         <nav className="mt-14 grid gap-4 border-t border-slate-200 pt-8 dark:border-slate-800 md:grid-cols-2">
           {previousDoc ? (
