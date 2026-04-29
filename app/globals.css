@@ -47,3 +47,27 @@ body {
 .dark .doc-prose strong {
   color: #f8fafc;
 }
+
+.code-block-highlight .shiki {
+  margin: 0;
+  overflow-x: auto;
+  background: transparent !important;
+  padding: 1.25rem 3.5rem 1.25rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+}
+
+.code-block-highlight .shiki code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.code-block-highlight .shiki,
+.code-block-highlight .shiki span {
+  color: var(--shiki-light);
+  background: transparent !important;
+}
+
+.dark .code-block-highlight .shiki,
+.dark .code-block-highlight .shiki span {
+  color: var(--shiki-dark);
+}

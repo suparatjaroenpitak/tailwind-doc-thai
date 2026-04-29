@@ -69,7 +69,7 @@ export function GeneratedDoc({ doc }: GeneratedDocProps) {
         ตัวอย่างโค้ด
       </h2>
       <CodeBlock>
-        <code>{example}</code>
+        <code className="language-html">{example}</code>
       </CodeBlock>
 
       <h2 id="อธิบายทีละบรรทัด" className="mt-12 scroll-m-20 text-2xl font-semibold tracking-normal text-slate-950 dark:text-white">
@@ -93,7 +93,7 @@ export function GeneratedDoc({ doc }: GeneratedDocProps) {
         ถ้าเขียน CSS เอง เราต้องตั้งชื่อ class และดูแล property แยกอีกไฟล์:
       </p>
       <CodeBlock>
-        <code>{cssExample}</code>
+        <code className="language-css">{cssExample}</code>
       </CodeBlock>
       <p className="mt-4 leading-8 text-slate-700 dark:text-slate-300">
         ส่วน Tailwind วาง class ไว้ที่ element เลย ทำให้แก้ layout, spacing หรือ state เฉพาะจุดได้เร็ว แต่ถ้า pattern นี้ซ้ำหลายที่ ควรแยกเป็น React component เพื่อให้ codebase อ่านง่าย
