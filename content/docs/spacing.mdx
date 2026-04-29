@@ -1,0 +1,71 @@
+## Spacing scale
+
+Tailwind ใช้ spacing scale กลาง เช่น `1`, `2`, `4`, `6`, `8` เพื่อควบคุม padding, margin และ gap ให้ทั้งระบบสอดคล้องกัน
+
+ตัวอย่างที่ใช้บ่อย:
+
+| Utility | ความหมาย |
+| --- | --- |
+| `p-4` | padding ทุกด้าน |
+| `px-6` | padding ซ้ายขวา |
+| `py-3` | padding บนล่าง |
+| `mt-4` | margin-top |
+| `gap-6` | ระยะระหว่าง item ใน flex/grid |
+
+## ตัวอย่างโค้ด
+
+```html
+<article class="rounded-lg border border-slate-200 p-6">
+  <p class="text-sm font-semibold text-sky-600">บทเรียน</p>
+  <h2 class="mt-2 text-2xl font-bold text-slate-900">Spacing ใน Tailwind</h2>
+  <p class="mt-4 text-slate-600">
+    ใช้ scale เดียวกันทั้งทีมเพื่อให้ UI สม่ำเสมอ
+  </p>
+  <div class="mt-6 flex gap-3">
+    <button class="rounded-md bg-sky-500 px-4 py-2 text-white">อ่านต่อ</button>
+    <button class="rounded-md border border-slate-200 px-4 py-2">บันทึก</button>
+  </div>
+</article>
+```
+
+## อธิบายทีละบรรทัด
+
+1. `p-6` ทำให้เนื้อหาใน card หายใจได้ ไม่ชิดขอบ
+2. `mt-2` เว้นหัวข้อจาก label เล็กน้อย
+3. `mt-4` เพิ่มระยะระหว่างหัวข้อกับย่อหน้า
+4. `mt-6` แยกกลุ่มปุ่มออกจากเนื้อหา
+5. `gap-3` เว้นช่องว่างระหว่างปุ่มโดยไม่ต้องใส่ margin ให้ปุ่มทีละตัว
+6. `px-4 py-2` ทำให้ปุ่มมีพื้นที่กดที่พอดี
+
+## Use case จริง
+
+ในทีมจริง spacing scale ช่วยลดคำถามว่า “ตรงนี้ 14px หรือ 16px ดี” เพราะทุกคนใช้ชุดค่าเดียวกันจาก Tailwind เมื่อ UI มี rhythm ที่สม่ำเสมอ ผู้ใช้จะสแกนหน้าได้ง่ายขึ้น
+
+## เทียบกับ CSS ปกติ
+
+```css
+.card {
+  padding: 1.5rem;
+}
+
+.card-title {
+  margin-top: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+```
+
+Tailwind:
+
+```html
+<article class="p-6">
+  <h2 class="mt-2">...</h2>
+  <div class="mt-6 flex gap-3">...</div>
+</article>
+```
+
+ถ้า spacing ใช้ซ้ำใน component หลายครั้ง Tailwind ยังคงอ่านง่าย เพราะ class สื่อความหมายตรงกับ property

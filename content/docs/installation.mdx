@@ -1,0 +1,64 @@
+## Tailwind ทำงานอย่างไร
+
+Tailwind CSS อ่านไฟล์ในโปรเจกต์ของเรา เช่น `tsx`, `jsx`, `html` หรือ `mdx` แล้วมองหา class ที่ใช้งานจริง จากนั้นจึงสร้าง CSS เฉพาะส่วนที่จำเป็นออกมาให้ browser ใช้
+
+แนวคิดสำคัญคือ **ไม่มี runtime ในหน้าเว็บ** ผู้ใช้ไม่ต้องโหลด JavaScript เพิ่มเพื่อให้ style ทำงาน และทีม frontend ได้ CSS ที่เล็กลงตาม class ที่ใช้จริง
+
+## ติดตั้งใน Next.js
+
+ตัวอย่างโปรเจกต์นี้ใช้ Next.js App Router และ Tailwind CSS v4:
+
+```bash
+npm install next react react-dom tailwindcss @tailwindcss/postcss
+```
+
+ไฟล์ `postcss.config.mjs`:
+
+```js
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {}
+  }
+};
+
+export default config;
+```
+
+ไฟล์ `app/globals.css`:
+
+```css
+@import "tailwindcss";
+```
+
+## อธิบายไฟล์สำคัญ
+
+1. `package.json` เก็บคำสั่ง `dev`, `build`, `start` และ dependency ของโปรเจกต์
+2. `app/layout.tsx` เป็น shell หลักของเว็บ เช่น navbar, metadata และ global font
+3. `app/globals.css` นำ Tailwind เข้ามาและกำหนด style พื้นฐานของเว็บ
+4. `content/docs/*.mdx` เก็บเนื้อหา docs เป็น Markdown ที่แทรก JSX ได้
+
+## Use case จริง
+
+ถ้าทีมของคุณทำ design system ภายในบริษัท Tailwind ช่วยให้สร้าง component ได้เร็วโดยไม่ต้องตั้งชื่อ class ใหม่ทุกครั้ง เช่น `Card`, `Button`, `Badge` สามารถประกอบจาก utility class แล้วค่อยห่อเป็น React component เมื่อ pattern เริ่มซ้ำ
+
+## เทียบกับ CSS ปกติ
+
+```css
+.primaryButton {
+  border-radius: 0.375rem;
+  background: #0ea5e9;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: white;
+}
+```
+
+เขียนเป็น Tailwind:
+
+```html
+<button class="rounded-md bg-sky-500 px-4 py-2 font-semibold text-white">
+  บันทึก
+</button>
+```
+
+ทั้งสองแบบได้ผลใกล้กัน แต่ Tailwind ทำให้เห็น style จาก markup ทันที และลดภาระการตั้งชื่อ class สำหรับ style เล็ก ๆ ที่ใช้บ่อย

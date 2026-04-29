@@ -1,0 +1,69 @@
+## Grid เหมาะกับอะไร
+
+Grid เหมาะกับ layout สองมิติที่ต้องคิดทั้งแถวและคอลัมน์ เช่น gallery, card list, dashboard, pricing table หรือหน้า docs ที่มี sidebar กับ content
+
+Tailwind เปิด Grid ด้วย `grid` แล้วกำหนดจำนวนคอลัมน์ด้วย `grid-cols-*` เช่น `grid-cols-3` หรือใช้ responsive prefix อย่าง `md:grid-cols-2`
+
+## ตัวอย่างโค้ด
+
+```html
+<section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <article class="rounded-lg border border-slate-200 p-4">
+    <p class="text-sm text-slate-500">ยอดขาย</p>
+    <p class="mt-2 text-2xl font-bold text-slate-900">128,400</p>
+  </article>
+  <article class="rounded-lg border border-slate-200 p-4">
+    <p class="text-sm text-slate-500">ผู้ใช้ใหม่</p>
+    <p class="mt-2 text-2xl font-bold text-slate-900">2,840</p>
+  </article>
+  <article class="rounded-lg border border-slate-200 p-4">
+    <p class="text-sm text-slate-500">Conversion</p>
+    <p class="mt-2 text-2xl font-bold text-slate-900">8.2%</p>
+  </article>
+</section>
+```
+
+## อธิบายทีละบรรทัด
+
+1. `grid` เปิด CSS Grid ให้ section
+2. `gap-4` เว้นช่องว่างระหว่าง card เท่ากันทั้งแนวตั้งและแนวนอน
+3. `sm:grid-cols-2` ตั้งแต่ breakpoint `sm` ขึ้นไปให้มี 2 คอลัมน์
+4. `lg:grid-cols-3` ตั้งแต่ breakpoint `lg` ขึ้นไปให้มี 3 คอลัมน์
+5. card แต่ละใบใช้ border, padding และ typography utility เพื่อให้ข้อมูลอ่านง่าย
+
+## Use case จริง
+
+หน้า dashboard มักมี metric card หลายใบที่ต้องเรียงใหม่ตามหน้าจอมือถือและ desktop Grid ช่วยให้ layout คุมง่ายกว่า Flex เพราะเรากำหนดจำนวนคอลัมน์โดยตรง
+
+สำหรับ docs site แบบนี้ Grid ยังใช้กับ home section, example list และ layout ที่ต้องมีพื้นที่ด้านข้างได้ดี
+
+## เทียบกับ CSS ปกติ
+
+```css
+.stats {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+```
+
+Tailwind:
+
+```html
+<section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  ...
+</section>
+```
+
+ข้อดีคือ breakpoint และจำนวนคอลัมน์อยู่ใน element เดียว ทำให้ดู layout behavior ได้เร็ว

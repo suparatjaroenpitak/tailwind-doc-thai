@@ -1,0 +1,66 @@
+## ระบบสี
+
+Tailwind มี palette ที่ตั้งชื่อเป็น family และระดับความเข้ม เช่น `slate-900`, `sky-500`, `emerald-600` ยิ่งตัวเลขสูงสียิ่งเข้มขึ้น
+
+รูปแบบ utility ที่เจอบ่อย:
+
+| Utility | ใช้กับ |
+| --- | --- |
+| `bg-sky-500` | สีพื้นหลัง |
+| `text-slate-700` | สีตัวอักษร |
+| `border-slate-200` | สีเส้นขอบ |
+| `ring-sky-100` | สี ring ตอน focus |
+
+## ตัวอย่างโค้ด
+
+```html
+<div class="rounded-lg border border-sky-200 bg-sky-50 p-6">
+  <p class="text-sm font-semibold text-sky-700">สีหลักของระบบ</p>
+  <h2 class="mt-2 text-2xl font-bold text-slate-950">ใช้สีให้สื่อสถานะ</h2>
+  <p class="mt-4 text-slate-700">
+    sky เหมาะกับ action หลัก ส่วน slate เหมาะกับข้อความและโครง UI
+  </p>
+  <button class="mt-6 rounded-md bg-sky-500 px-4 py-2 font-semibold text-white hover:bg-sky-600">
+    ยืนยัน
+  </button>
+</div>
+```
+
+## อธิบายทีละบรรทัด
+
+1. `border-sky-200` ทำให้ card มีกรอบสีฟ้าอ่อน
+2. `bg-sky-50` ให้พื้นหลังฟ้าอ่อนมาก เหมาะกับ information panel
+3. `text-sky-700` ใช้กับ label เพื่อบอกว่า content นี้เกี่ยวกับ action หรือข้อมูลสำคัญ
+4. `text-slate-950` ใช้กับหัวข้อเพื่อ contrast สูง
+5. `text-slate-700` ใช้กับย่อหน้า อ่านง่ายกว่าใช้สีดำล้วน
+6. `hover:bg-sky-600` ทำให้ปุ่มมี feedback เมื่อ hover
+
+## Use case จริง
+
+ใช้สีเพื่อสื่อ hierarchy และ state เช่น ปุ่มหลักใช้ `sky`, ข้อความสำเร็จใช้ `emerald`, คำเตือนใช้ `amber`, error ใช้ `rose` ส่วนโครงสร้างทั่วไปใช้ `slate`
+
+อย่าใช้สีสดกับทุกอย่าง เพราะผู้ใช้จะไม่รู้ว่า element ไหนสำคัญที่สุด ให้เลือกสีหลัก 1 สีสำหรับ action และใช้ neutral สำหรับข้อความส่วนใหญ่
+
+## เทียบกับ CSS ปกติ
+
+```css
+.notice {
+  border-color: #bae6fd;
+  background: #f0f9ff;
+  color: #334155;
+}
+
+.notice-label {
+  color: #0369a1;
+}
+```
+
+Tailwind:
+
+```html
+<div class="border-sky-200 bg-sky-50 text-slate-700">
+  <p class="text-sky-700">สีหลักของระบบ</p>
+</div>
+```
+
+Tailwind ทำให้ชื่อสีและระดับความเข้มเป็นภาษาเดียวกันทั้งทีม จึงคุยเรื่อง UI ได้ง่ายกว่าใช้ hex code กระจัดกระจาย

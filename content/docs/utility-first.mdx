@@ -1,0 +1,50 @@
+## Utility-first คืออะไร
+
+Utility-first คือการสร้าง UI จาก class ขนาดเล็กที่ทำหน้าที่ชัดเจน เช่น `p-4` แปลว่า padding, `bg-sky-500` แปลว่าสีพื้นหลัง และ `rounded-md` แปลว่ามุมโค้งระดับกลาง
+
+แทนที่จะเขียน class แบบ `card`, `btn-primary`, `navbar-item` ตั้งแต่ต้น เราเริ่มจาก utility class ก่อน เมื่อพบว่ารูปแบบซ้ำจริงค่อยแยกเป็น component
+
+```html
+<article class="rounded-lg border border-slate-200 p-6 shadow-sm">
+  <h2 class="text-xl font-bold text-slate-950">เอกสารภาษาไทย</h2>
+  <p class="mt-3 text-slate-600">อ่านง่าย เหมาะกับนักพัฒนาไทย</p>
+</article>
+```
+
+## ต่างจาก Bootstrap อย่างไร
+
+Bootstrap มักให้ component class สำเร็จรูป เช่น `btn btn-primary` หรือ `card` ซึ่งสะดวกมากตอนเริ่มต้น แต่หน้าตามักผูกกับ design system ของ Bootstrap
+
+Tailwind ให้ vocabulary ของ CSS แทน เช่น spacing, color, font, border, shadow นักพัฒนาจึงสร้างหน้าตาที่ตรงกับ brand ได้ละเอียดกว่าโดยไม่ต้อง override CSS เยอะ
+
+| แนวทาง | ตัวอย่าง | จุดเด่น |
+| --- | --- | --- |
+| Bootstrap | `btn btn-primary` | เริ่มเร็ว มี component สำเร็จ |
+| Tailwind | `rounded-md bg-sky-500 px-4 py-2` | ปรับละเอียด เห็น style จาก markup |
+
+## ใช้จริงเมื่อไหร่
+
+เหมาะมากกับ product UI, dashboard, internal tool, SaaS, marketing page และทีมที่ต้องการให้ frontend กับ designer คุยกันด้วย scale เดียวกัน เช่น spacing ใช้ `4`, `6`, `8` แทนค่าลอย ๆ อย่าง `17px`
+
+## เทียบกับ CSS ปกติ
+
+CSS ปกติ:
+
+```css
+.profile-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+```
+
+Tailwind:
+
+```html
+<div class="rounded-lg border border-slate-200 p-6 shadow-sm">
+  ...
+</div>
+```
+
+ข้อดีคือไม่ต้องสลับไปมาระหว่าง markup กับ CSS เพื่อเข้าใจหน้าตาของ element เดียวกัน แต่ถ้า class ยาวและใช้ซ้ำหลายจุด ควรห่อเป็น component เช่น `<ProfileCard />`

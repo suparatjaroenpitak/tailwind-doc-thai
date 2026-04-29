@@ -1,0 +1,73 @@
+## Flex คืออะไร
+
+Flexbox เหมาะกับการจัดวาง element ในหนึ่งมิติ เช่น เรียงแนวนอน, จัดกึ่งกลาง, กระจายพื้นที่ระหว่าง item หรือทำ toolbar ที่ปุ่มอยู่คนละฝั่ง
+
+ใน Tailwind เราใช้ `flex` เพื่อเปิด flex container แล้วใช้ utility อื่นควบคุมทิศทางและการจัดตำแหน่ง เช่น `items-center`, `justify-between`, `gap-4`
+
+## ตัวอย่างโค้ด
+
+```html
+<div class="flex items-center justify-between gap-4 rounded-lg border border-slate-200 p-4">
+  <div class="flex items-center gap-3">
+    <div class="h-10 w-10 rounded-full bg-sky-500"></div>
+    <div>
+      <p class="font-semibold text-slate-900">Nicha Dev</p>
+      <p class="text-sm text-slate-500">Frontend Engineer</p>
+    </div>
+  </div>
+  <button class="rounded-md bg-sky-500 px-4 py-2 text-sm font-semibold text-white">
+    ติดตาม
+  </button>
+</div>
+```
+
+## อธิบายทีละบรรทัด
+
+1. `flex` ทำให้กล่องนอกจัดลูกในแนวนอนเป็นค่าเริ่มต้น
+2. `items-center` จัด item ให้อยู่กึ่งกลางในแกนตั้ง
+3. `justify-between` ดันข้อมูลผู้ใช้ไปซ้าย และปุ่มไปขวา
+4. `gap-4` เว้นระยะระหว่างกลุ่มข้อมูลกับปุ่ม
+5. กล่องด้านในใช้ `flex items-center gap-3` เพื่อจัด avatar กับข้อความให้อยู่แถวเดียวกัน
+6. ปุ่มใช้ `bg-sky-500`, `px-4`, `py-2`, `rounded-md` เพื่อสร้างปุ่มแบบไม่ต้องเขียน CSS เพิ่ม
+
+## Use case จริง
+
+ใช้กับ navbar, user row, toolbar, action bar, badge group และ layout ที่มี item จำนวนไม่มากแต่ต้องจัดตำแหน่งให้แม่น
+
+ตัวอย่างเช่น header ของ dashboard มักใช้:
+
+```html
+<header class="flex items-center justify-between border-b px-6 py-4">
+  <h1 class="text-xl font-bold">Dashboard</h1>
+  <div class="flex items-center gap-2">
+    <button class="rounded-md border px-3 py-2">Export</button>
+    <button class="rounded-md bg-sky-500 px-3 py-2 text-white">New</button>
+  </div>
+</header>
+```
+
+## เทียบกับ CSS ปกติ
+
+CSS ปกติ:
+
+```css
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+```
+
+Tailwind:
+
+```html
+<div class="flex items-center justify-between gap-4 rounded-lg border border-slate-200 p-4">
+  ...
+</div>
+```
+
+เมื่ออ่าน Tailwind จะเห็น layout, spacing, border และ alignment ใน markup ทันที จึงแก้ UI เฉพาะจุดได้เร็วกว่าในงาน product ที่ component เปลี่ยนบ่อย
